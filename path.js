@@ -11,6 +11,15 @@ class Road{
     // y axis on computer grows downwards//
     this.top = -infinite;
     this.bottom = infinite;
+
+    const topLeft = {x:this.left,y:this.top};
+    const topRight = {x:this.right,y:this.top};
+    const bottomLeft = {x:this.left,y:this.bottom};
+    const bottomRight = {x:this.right,y:this.bottom};
+    this.borders=[
+      [topLeft,bottomLeft],
+      [topRight, bottomRight]
+    ]
   }
 
   GetCenterofLane(laneIndex){
@@ -27,21 +36,22 @@ class Road{
       this.right,
       i/this.laneCount
     )
-    if(i>0 && i<this.laneCount){
-      ctx.setLineDash([20,20]);
-    }
-    else{
-      ctx.setLineDash([])
-    }
-
-  
-
-
+ 
+     
+    ctx.setLineDash([20,20]);
     ctx.beginPath();
     ctx.moveTo(x, this.top);
     ctx.lineTo(x,this.bottom);
     ctx.stroke();
   }
+
+  ctx.setLineDash([]);
+  this.borders.forEach(border=>{
+    ctx.beginPath();
+    ctx.moveTo(border[0].x,border[0].y);
+    ctx.moveTo(border[1].x,border[1].y);
+    ctx.stroke();
+  })
 
   }
 }

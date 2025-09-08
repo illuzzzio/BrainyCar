@@ -16,10 +16,13 @@ car.draw(ctx);
 const animate =()=>{
   car.update();
   canvas.height = window.innerHeight;
+  ctx.save();
+  ctx.translate(0,-car.y+canvas.height*0.5);
   road.draw(ctx);
   // so as soon as the canvas height updates , car height also adjust making it move without streching , as because erlier when the we press arrow up , the car was moving and was getting elongated , but now , the car is moving relative to canvas height. as the car streaches , canvas height also adjust , making an illusion that the car is moving....
 
   car.draw(ctx);
+  ctx.restore();
   requestAnimationFrame(animate);
 }
 animate();
