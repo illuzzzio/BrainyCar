@@ -7,7 +7,7 @@ class Car {
 
     this.velocity = 0;
     this.acc = 0.2;
-    this.maxvel = 5;
+    this.maxvel = 4;
     this.friction = 0.05;
 
     this.ctrl = new Controls();
