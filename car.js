@@ -7,7 +7,7 @@ class Car {
 
     this.velocity = 0;
     this.acc = 0.2;
-    this.maxvel = 3;
+    this.maxvel = 5;
     this.friction = 0.05;
 
     this.ctrl = new Controls();
@@ -39,7 +39,7 @@ class Car {
       this.velocity =0;
     }
     if(this.velocity!=0){
-      const flip = this.speed>0?1:-1;
+      const flip = this.velocity>0?1:-1;
          if(this.ctrl.left){
            this.theta+=0.03*flip;
            }
